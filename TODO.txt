@@ -1,0 +1,15 @@
+V1: Completed
+
+V2: 
+    - debugging for file errors 
+    - Add error handling for converter tool
+
+V3:
+    - Create command line interface (cli) for easy use    
+
+Final use:
+Use to download all the study mix audio files
+
+Known Bugs:
+- Program cannot tell the difference between an mp4 with/without a video stream (relies on user choice variable)
+        Error is thrown if converter program attempts to create the wrong object (AudioFileClip vs VideoFileClip) 
