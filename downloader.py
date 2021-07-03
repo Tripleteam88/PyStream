@@ -32,7 +32,7 @@ def convert_queue(queue: list):
 
     return yt_list
 
-def ready_queue(yt_list: list, audio_only=False):
+def ready_queue(yt_list: list, audio_only):
     '''
     Identifies proper streams to download
     Either Audio only or just default (for now)
@@ -45,12 +45,12 @@ def ready_queue(yt_list: list, audio_only=False):
     for yt in yt_list:
         if audio_only == True:
             streams.append(yt.streams.get_audio_only())
-        else:
+        elif audio_only == False:
             streams.append(yt.streams.first())
 
     return streams
 
-def download_streams(streams: list):
+def download_streams(streams: list, audio_only):
     '''
     Downloads all the videos to a folder named "Videos"
 
@@ -67,6 +67,9 @@ def download_streams(streams: list):
         print(f'Download: {i} has finished!')
         i += 1
 
+        #TODO: add function that changes the file extensions of these mp4s in the audio folder
+
+
 # Lists (used as parameters for next function)
 queue = []
 yt_list = []
@@ -76,7 +79,7 @@ streams = []
 q = read_queue()
 yt_list = convert_queue(q)
 streams = ready_queue(yt_list, audio_stream_only)
-download_streams(streams)
+download_streams(streams, audio_stream_only)
 
 # NOTE
 # Implemented option to download video stream instead of just audio stream 
